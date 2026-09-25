@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilowatt Kingsman LLC | Electrical Services</title>
+<link rel="icon" href="https://kilowatt-kingsman.com/wp-content/uploads/2026/06/1000006488-e1782837570745.png">
+<style>
+:root{
+  --gold:#c99a3d;--gold-light:#e9c273;--dark:#0b0d12;--dark2:#12151c;--panel:#171b24;
+  --text:#e9ecf2;--muted:#98a1b3;--line:#252a36;--radius:16px;
+  font-family:'Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+::selection{background:var(--gold);color:#12151c}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:14px 30px;border-radius:50px;font-weight:600;letter-spacing:.03em;cursor:pointer;border:2px solid var(--gold);transition:.25s}
+.btn-fill{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#12151c}
+.btn-fill:hover{transform:translateY(-2px);box-shadow:0 10px 25px -8px var(--gold)}
+.btn-outline{background:transparent;color:var(--gold-light)}
+.btn-outline:hover{background:var(--gold);color:#12151c}
+.eyebrow{color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-size:.8rem;font-weight:700}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2}
+h2{font-size:2.2rem;margin:.4em 0}
+section{padding:80px 0}
+.center{text-align:center}
+
+/* INTRO */
+#intro{position:fixed;inset:0;background:#08090c;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .7s ease, visibility .7s}
+#intro img{width:110px;height:110px;object-fit:contain;filter:drop-shadow(0 0 25px rgba(201,154,61,.6));animation:pulse 1.8s ease-in-out infinite}
+#intro .brand{font-family:Georgia,serif;font-size:1.9rem;letter-spacing:.08em;overflow:hidden;white-space:nowrap;border-right:3px solid var(--gold);width:0;animation:type 1.6s steps(18) .3s forwards, blink .8s step-end infinite}
+#intro .sub{color:var(--gold);letter-spacing:.4em;font-size:.7rem;opacity:0;animation:fade .6s ease 2s forwards}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes type{from{width:0}to{width:9.2em}}
+@keyframes blink{50%{border-color:transparent}}
+@keyframes fade{to{opacity:1}}
+#intro.hide{opacity:0;visibility:hidden}
+body.locked{overflow:hidden}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:500;background:rgba(11,13,18,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar{background:#000;font-size:.78rem;color:var(--muted)}
+.topbar .wrap{display:flex;justify-content:space-between;padding:6px 24px}
+.topbar a:hover{color:var(--gold)}
+.navwrap{display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
+.brand-box{display:flex;align-items:center;gap:12px}
+.brand-box img{width:56px;height:56px;object-fit:contain}
+.brand-box .name{font-family:Georgia,serif;font-size:1.15rem;color:#fff;line-height:1.1}
+.brand-box .name span{display:block;color:var(--gold);font-size:.65rem;letter-spacing:.2em;font-family:'Segoe UI',sans-serif}
+nav ul{list-style:none;display:flex;gap:30px}
+nav a{font-weight:600;font-size:.92rem;color:var(--text);position:relative;padding:6px 0}
+nav a.active,nav a:hover{color:var(--gold)}
+nav a.active::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--gold)}
+#burger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;background:
+  linear-gradient(120deg,rgba(8,9,12,.92),rgba(8,9,12,.75)),
+  url('https://kilowatt-kingsman.com/wp-content/uploads/elementor/thumbs/Electric-scaled-rt43kdvqwez2x6gzl0ejv3qq8zk1ariles4zii9jbs.jpg') center/cover}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:3rem;color:#fff;margin:.3em 0}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:var(--muted);max-width:520px;margin-bottom:28px}
+.hero .badges{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+.hero .badges div{background:var(--panel);border:1px solid var(--line);padding:14px 20px;border-radius:12px;font-size:.85rem;color:var(--gold-light)}
+.hero-img{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -20px #000}
+
+/* CARDS/GRID */
+.grid{display:grid;gap:26px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:var(--gold)}
+.card img{height:190px;width:100%;object-fit:cover}
+.card .body{padding:22px}
+.card h3{color:#fff;font-size:1.15rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.92rem;margin-bottom:14px}
+.card .link{color:var(--gold);font-weight:700;font-size:.85rem}
+.sec-head{max-width:640px;margin-bottom:44px}
+.dark-panel{background:var(--dark2)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.why-grid .item{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
+.why-grid .item .num{color:var(--gold);font-family:Georgia,serif;font-size:1.6rem}
+.stats{display:flex;gap:50px;margin-top:36px;flex-wrap:wrap}
+.stats b{font-size:2.2rem;color:var(--gold);font-family:Georgia,serif;display:block}
+.stats span{color:var(--muted);font-size:.85rem}
+.rev-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.rev-card .stars{color:var(--gold);letter-spacing:2px;margin-bottom:10px}
+.rev-card .who{margin-top:14px;font-weight:700;color:#fff}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery-grid img{border-radius:10px;height:150px;width:100%;object-fit:cover;border:1px solid var(--line);cursor:pointer;transition:.3s}
+.gallery-grid img:hover{transform:scale(1.04);border-color:var(--gold)}
+.faq-item{border-bottom:1px solid var(--line);padding:18px 0;cursor:pointer}
+.faq-item .q{display:flex;justify-content:space-between;font-weight:700;color:#fff}
+.faq-item .a{max-height:0;overflow:hidden;color:var(--muted);transition:.3s;font-size:.92rem}
+.faq-item.open .a{max-height:200px;padding-top:10px}
+.faq-item .q .icon{color:var(--gold);transition:.3s}
+.faq-item.open .q .icon{transform:rotate(45deg)}
+.form-grid{display:grid;gap:16px}
+input,textarea{width:100%;padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--text);font-family:inherit}
+textarea{min-height:120px}
+.contact-box{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:16px}
+.contact-box .eyebrow{display:block;margin-bottom:6px}
+.cta-band{background:linear-gradient(120deg,#1a140a,#0b0d12);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;padding:60px 0}
+footer{background:#000;padding:50px 0 20px;color:var(--muted);font-size:.9rem}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:30px}
+footer h4{color:#fff;margin-bottom:14px}
+footer li{margin-bottom:8px}
+footer li a:hover{color:var(--gold)}
+.foot-bottom{border-top:1px solid var(--line);margin-top:34px;padding-top:16px;text-align:center;font-size:.8rem}
+.page-hero{padding:60px 0 30px;text-align:center;background:var(--dark2)}
+.video-box{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9}
+.video-box iframe{width:100%;height:100%;border:0}
+.back-link{color:var(--gold);font-weight:700;display:inline-block;margin-bottom:20px}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}.hero h1{font-size:2.1rem}
+  .grid-3,.why-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  nav{position:fixed;top:86px;left:0;right:0;background:var(--dark2);border-bottom:1px solid var(--line);display:none;flex-direction:column;padding:10px 24px}
+  nav.open{display:flex}
+  nav ul{flex-direction:column;gap:0}
+  nav li{border-bottom:1px solid var(--line)}
+  nav a{display:block;padding:14px 0}
+  #burger{display:block}
+  .grid-3,.grid-2,.why-grid,.foot-grid,.gallery-grid{grid-template-columns:1fr}
+  .stats{gap:26px}
+}
+</style>
+</head>
+<body class="locked">
+
+<div id="intro">
+  <img src="https://kilowatt-kingsman.com/wp-content/uploads/2026/06/1000006488-e1782837570745.png" alt="logo">
+  <div class="brand">KILOWATT KINGSMAN</div>
+  <div class="sub">P O W E R I N G &nbsp; T R U S T</div>
+</div>
+
+<header>
+  <div class="topbar"><div class="wrap">
+    <a href="tel:6155355464">Call Us Now! (615) 535-5464</a>
+    <a href="mailto:kilowattkingsman@gmail.com">kilowattkingsman@gmail.com</a>
+  </div></div>
+  <div class="wrap navwrap">
+    <a href="#/" class="brand-box">
+      <img src="https://kilowatt-kingsman.com/wp-content/uploads/2026/06/1000006488-e1782837570745.png" alt="Kilowatt Kingsman logo">
+      <div class="name">Kilowatt Kingsman<span>ELECTRICAL SERVICES</span></div>
+    </a>
+    <button id="burger" onclick="document.getElementById('mainnav').classList.toggle('open')">☰</button>
+    <nav id="mainnav">
+      <ul>
+        <li><a href="#/" data-r="home">Home</a></li>
+        <li><a href="#/about" data-r="about">About Us</a></li>
+        <li><a href="#/services" data-r="services">Services</a></li>
+        <li><a href="#/gallery" data-r="gallery">Gallery</a></li>
+        <li><a href="#/testimonials" data-r="testimonials">Testimonials</a></li>
+        <li><a href="#/faqs" data-r="faqs">FAQs</a></li>
+        <li><a href="#/contact" data-r="contact">Contact Us</a></li>
+      </ul>
+    </nav>
+    <a href="#/contact" class="btn btn-fill" style="display:none" id="headCta">Schedule a Booking</a>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-box" style="margin-bottom:14px">
+          <img src="https://kilowatt-kingsman.com/wp-content/uploads/2026/06/1000006488-e1782837570745.png" style="width:44px;height:44px">
+          <b style="color:#fff;font-family:Georgia,serif">Kilowatt Kingsman</b>
+        </div>
+        <p>Dependable electrical services in Portland, TN — wiring, lighting, panel upgrades, and emergency repairs done right.</p>
+      </div>
+      <div><h4>Quick Links</h4><ul>
+        <li><a href="#/">Home</a></li><li><a href="#/about">About Us</a></li>
+        <li><a href="#/services">Services</a></li><li><a href="#/contact">Contact</a></li>
+      </ul></div>
+      <div><h4>Contact Info</h4><ul>
+        <li>104 Poplar St, Portland, TN 37148</li>
+        <li><a href="tel:6155355464">(615) 535-5464</a></li>
+        <li><a href="mailto:kilowattkingsman@gmail.com">kilowattkingsman@gmail.com</a></li>
+      </ul></div>
+      <div><h4>Working Hours</h4><ul>
+        <li>Mon – Sat: 8AM – 6PM</li><li>Sunday: Closed</li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">© 2026 Kilowatt Kingsman LLC. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+const services=[
+ {id:'repair-troubleshooting',name:'Electrical Repair and Troubleshooting',
+  img:'https://avatars.mds.yandex.net/i?id=c909f81be2e84914dd92a1a7684a28641b7b7c21-6431007-images-thumbs&n=13',
+  short:'We diagnose and repair electrical problems to restore safe and reliable operation.',
+  desc:'Our team quickly identifies issues and provides effective, lasting repairs so your property stays safe. From tripped breakers to flickering lights, we troubleshoot root causes — not just symptoms — using industry-standard diagnostic methods.',
+  video:'https://www.youtube.com/embed/ZjNqmBOn8go'},
+ {id:'panel-upgrades',name:'Electrical Panel Upgrades',
+  img:'https://avatars.mds.yandex.net/i?id=9feb068fdd148f14629e34baa9bf963c9ec0cc72-4949469-images-thumbs&n=13',
+  short:'We upgrade electrical panels to improve performance and support increased power demands.',
+  desc:'Outdated panels can\'t keep up with modern power needs. We upgrade panels to enhance safety, prevent overloads, and support the demands of today\'s homes and businesses — all completed to code.',
+  video:'https://www.youtube.com/embed/1u8QJsJMhLg'},
+ {id:'lighting-installation',name:'Lighting Installation',
+  img:'https://avatars.mds.yandex.net/i?id=84d5a033dc78590f4eedecba0fc280aae4936f6e-5542956-images-thumbs&n=13',
+  short:'We install indoor and outdoor lighting solutions for improved visibility and functionality.',
+  desc:'From accent lighting to full property installs, our team ensures clean, efficient, and professional lighting work indoors and out — improving both safety and the look of your space.',
+  video:'https://www.youtube.com/embed/zR8w6nQ5r8U'},
+ {id:'wiring-services',name:'Wiring Services',
+  img:'https://avatars.mds.yandex.net/i?id=e107e205a7a22a635ba54cedace1e7c54ebcd235-4884602-images-thumbs&n=13',
+  short:'We provide wiring services for new construction, remodeling, and electrical upgrades.',
+  desc:'Whether it\'s new construction or a remodel, all wiring is completed safely and to industry standards — giving you a system built to last and pass inspection.',
+  video:'https://www.youtube.com/embed/lZ3z8a1sPeg'},
+ {id:'outlet-switch',name:'Outlet and Switch Installation',
+  img:'https://avatars.mds.yandex.net/i?id=3d593bc07dc0079144ccca240019814e6d855439-8552056-images-thumbs&n=13',
+  short:'We install and replace outlets and switches for convenience and reliable performance.',
+  desc:'Our team ensures proper placement and safe operation of every outlet and switch throughout your space, adding convenience without compromising safety.',
+  video:'https://www.youtube.com/embed/4hyBTG-fJmY'},
+ {id:'emergency',name:'Emergency Electrical Services',
+  img:'https://avatars.mds.yandex.net/i?id=1d8ff2a1a55d0528960e6147ce48b092975a2663-7862872-images-thumbs&n=13',
+  short:'We respond quickly to urgent electrical issues that require immediate attention.',
+  desc:'Electrical emergencies don\'t wait — neither do we. Our emergency services help restore safety fast and minimize downtime for your home or business.',
+  video:'https://www.youtube.com/embed/6M8p4dV3nQY'}
+];
+const testimonials=[
+ {n:'Michael Anderson',t:'We had several electrical issues throughout our property, and the team handled everything professionally. They arrived on time, explained the work clearly, and completed the repairs efficiently.'},
+ {n:'Sarah Thompson',t:'Excellent service from start to finish. The electricians were knowledgeable, courteous, and paid close attention to detail. They completed our panel upgrade and lighting installation on schedule.'},
+ {n:'Louis Fox',t:'We contacted them for wiring repairs and safety upgrades, and the experience was outstanding. The team communicated well throughout the project and maintained a clean workspace.'},
+ {n:'David Nash',t:'Reliable, professional, and easy to work with. They quickly diagnosed our electrical problems and provided effective solutions at a fair price.'}
+];
+const faqs=[
+ ['What electrical services do you provide?','We offer complete electrical services from panel upgrades to lighting installation and emergency electrical solutions.'],
+ ['Can you upgrade an outdated electrical panel?','Yes, we upgrade electrical panels to improve safety, performance, and support modern power demands.'],
+ ['How do I know if my wiring needs to be replaced?','Frequent breaker trips, flickering lights, and outdated wiring may indicate the need for an inspection or replacement.'],
+ ['Are your electrical services code compliant?','Yes, all work is completed according to applicable electrical codes and safety standards.'],
+ ['Do you provide emergency electrical services?','Yes, we provide emergency electrical services to help address urgent issues safely and efficiently.'],
+ ['Do you install indoor and outdoor lighting?','Yes, we install a wide range of indoor and outdoor lighting systems for residential and commercial properties.'],
+ ['Do you perform electrical safety inspections?','Yes, we provide detailed safety inspections to identify hazards and ensure your electrical system is operating properly.'],
+ ['Can I request an estimate before scheduling service?','Yes, we provide estimates based on your electrical needs and project requirements before work begins.']
+];
+const gallery=['Project-8-scaled','Project-9-scaled','Project-11-scaled','Project-12-scaled','Project-13-scaled','Project-15-scaled','Project-16-scaled','Project-19-scaled'].map(f=>`https://kilowatt-kingsman.com/wp-content/uploads/2026/06/${f}.jpg`);
+
+function serviceCards(){return services.map(s=>`
+  <div class="card">
+    <img src="${s.img}" alt="${s.name}" loading="lazy">
+    <div class="body"><h3>${s.name}</h3><p>${s.short}</p>
+    <a class="link" href="#/service/${s.id}">Learn More →</a></div>
+  </div>`).join('');}
+
+function homeView(){return `
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="eyebrow">Professional • Trustworthy</span>
+    <h1>Our electrical services are all <em>under one roof</em>.</h1>
+    <p>Your property deserves safe and reliable electrical work. From repairs and troubleshooting to panel upgrades and installations, we deliver quality service backed by skilled workmanship and a commitment to safety.</p>
+    <a href="#/services" class="btn btn-fill">Explore Services</a>
+    <a href="tel:6155355464" class="btn btn-outline" style="margin-left:12px">Call Now</a>
+    <div class="badges">
+      <div>16+ Years Experience</div><div>24/7 Service</div><div>600+ Projects Completed</div>
+    </div>
+  </div>
+  <img class="hero-img" src="https://kilowatt-kingsman.com/wp-content/uploads/2026/06/Project-45-1024x768.jpg" alt="Electrician at work">
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">Our Services</span>
+    <h2>Comprehensive solutions tailored to your home's requirements</h2>
+    <p style="color:var(--muted)">From quick fixes to in-depth repairs, we're here to make your space better, safer, and more comfortable.</p>
+  </div>
+  <div class="grid grid-3">${serviceCards()}</div>
+  <div class="center" style="margin-top:36px"><a href="#/services" class="btn btn-fill">Explore Services</a></div>
+</div></section>
+
+<section class="dark-panel"><div class="wrap">
+  <span class="eyebrow">Why Choose Us</span>
+  <h2>Your reliable partner for safe, efficient, and professional electrical services.</h2>
+  <div class="why-grid">
+    <div class="item"><div class="num">01</div><h3 style="color:#fff;margin:10px 0">16+ Years of Experience</h3><p style="color:var(--muted)">Skilled electricians handling every project with precision and attention to safety.</p></div>
+    <div class="item"><div class="num">02</div><h3 style="color:#fff;margin:10px 0">24/7 Services</h3><p style="color:var(--muted)">Responsive service when you need it most, from emergencies to scheduled installs.</p></div>
+    <div class="item"><div class="num">03</div><h3 style="color:#fff;margin:10px 0">Verified Professionals</h3><p style="color:var(--muted)">Qualified electricians committed to code-compliant, high-quality workmanship.</p></div>
+  </div>
+  <div class="stats">
+    <div><b>16+</b><span>Years Experience</span></div>
+    <div><b>600+</b><span>Projects Completed</span></div>
+    <div><b>24/7</b><span>Emergency Service</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">Testimonials</span><h2>Customer experiences that highlight our dedication and skill</h2></div>
+  <div class="grid grid-2">${testimonials.slice(0,4).map(t=>`
+    <div class="rev-card"><div class="stars">★★★★★</div><p style="color:var(--muted)">${t.t}</p><div class="who">${t.n}</div></div>`).join('')}</div>
+</div></section>
+
+<div class="cta-band"><div class="wrap">
+  <h2>We offer high-quality electrical services at competitive prices.</h2>
+  <div style="margin-top:22px"><a href="#/contact" class="btn btn-fill">Schedule a Booking</a>
+  <a href="tel:6155355464" class="btn btn-outline" style="margin-left:12px">Call Now</a></div>
+</div></div>`;}
+
+function aboutView(){return `
+<div class="page-hero"><span class="eyebrow">About Us</span><h1>Powering Trust Across Middle Tennessee</h1></div>
+<section><div class="wrap">
+  <div class="grid grid-2" style="align-items:center">
+    <img src="https://kilowatt-kingsman.com/wp-content/uploads/2026/06/Project-45-1024x768.jpg" style="border-radius:16px">
+    <div>
+      <span class="eyebrow">Who We Are</span>
+      <h2>Clients trust our service because we deliver reliable electrical solutions with professionalism and care.</h2>
+      <p style="color:var(--muted);margin:16px 0">With years of industry experience and a commitment to safety, we approach every electrical project with precision and attention to detail. We value the trust our customers place in us and strive to be the dependable choice for repairs, installations, upgrades, and ongoing electrical needs.</p>
+      <p style="color:var(--muted)">Our skilled electricians handle everything from minor electrical repairs to complete system upgrades with quality workmanship and professionalism.</p>
+    </div>
+  </div>
+  <div class="grid grid-3" style="margin-top:60px">
+    <div class="card"><div class="body"><h3>Our Principles</h3><p>We believe in honesty, quality, and reliability — every service completed with transparency and attention to safety.</p></div></div>
+    <div class="card"><div class="body"><h3>Our Values</h3><p>Trust, integrity, and dedication guide everything we do, building lasting relationships through dependable results.</p></div></div>
+    <div class="card"><div class="body"><h3>Our Vision</h3><p>To be the trusted electrical provider known for safety, quality workmanship, and exceptional customer care.</p></div></div>
+  </div>
+  <div class="stats center" style="justify-content:center;margin-top:60px">
+    <div><b>16+</b><span>Years Experience</span></div>
+    <div><b>600+</b><span>Projects Completed</span></div>
+    <div><b>24/7</b><span>Emergency Service</span></div>
+  </div>
+</div></section>`;}
+
+function servicesView(){return `
+<div class="page-hero"><span class="eyebrow">Our Services</span><h1>Everything you need, under one roof</h1></div>
+<section><div class="wrap"><div class="grid grid-3">${serviceCards()}</div></div></section>`;}
+
+function serviceDetailView(id){
+  const s=services.find(x=>x.id===id); if(!s) return `<section><div class="wrap center"><h2>Service not found</h2><a href="#/services" class="btn btn-fill">Back to Services</a></div></section>`;
+  const related=services.filter(x=>x.id!==id).slice(0,3);
+  return `
+<div class="page-hero"><span class="eyebrow">Service</span><h1>${s.name}</h1></div>
+<section><div class="wrap">
+  <a href="#/services" class="back-link">← All Services</a>
+  <div class="grid grid-2" style="align-items:start">
+    <div><img src="${s.img}" style="border-radius:16px;margin-bottom:20px">
+      <p style="color:var(--muted)">${s.desc}</p>
+      <div style="margin-top:24px"><a href="#/contact" class="btn btn-fill">Schedule a Booking</a> <a href="tel:6155355464" class="btn btn-outline">Call Now</a></div>
+    </div>
+    <div class="video-box"><iframe src="${s.video}" title="${s.name} video" allowfullscreen></iframe></div>
+  </div>
+  <h2 style="margin-top:60px">Related Services</h2>
+  <div class="grid grid-3" style="margin-top:20px">${related.map(r=>`
+    <div class="card"><img src="${r.img}"><div class="body"><h3>${r.name}</h3><a class="link" href="#/service/${r.id}">Learn More →</a></div></div>`).join('')}</div>
+</div></section>`;}
+
+function galleryView(){return `
+<div class="page-hero"><span class="eyebrow">Gallery</span><h1>Inspiration for your next project</h1></div>
+<section><div class="wrap"><div class="gallery-grid">${gallery.map(g=>`<img src="${g}" loading="lazy">`).join('')}</div></div></section>`;}
+
+function testimonialsView(){return `
+<div class="page-hero"><span class="eyebrow">Testimonials</span><h1>What our customers say</h1></div>
+<section><div class="wrap"><div class="grid grid-2">${testimonials.map(t=>`
+  <div class="rev-card"><div class="stars">★★★★★</div><p style="color:var(--muted)">${t.t}</p><div class="who">${t.n}</div></div>`).join('')}</div></div></section>`;}
+
+function faqsView(){return `
+<div class="page-hero"><span class="eyebrow">FAQs</span><h1>Common Questions</h1></div>
+<section><div class="wrap" style="max-width:800px">
+  ${faqs.map((f,i)=>`<div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="q">${f[0]}<span class="icon">+</span></div><div class="a">${f[1]}</div></div>`).join('')}
+</div></section>`;}
+
+function contactView(){return `
+<div class="page-hero"><span class="eyebrow">Contact Us</span><h1>Get In Touch</h1></div>
+<section><div class="wrap"><div class="grid grid-2" style="align-items:start">
+  <div>
+    <div class="contact-box"><span class="eyebrow">Address</span><p>104 Poplar St, Portland, TN 37148</p></div>
+    <div class="contact-box"><span class="eyebrow">Phone</span><p><a href="tel:6155355464">(615) 535-5464</a></p></div>
+    <div class="contact-box"><span class="eyebrow">Email</span><p><a href="mailto:kilowattkingsman@gmail.com">kilowattkingsman@gmail.com</a></p></div>
+    <div class="contact-box"><span class="eyebrow">Working Hours</span><p>Mon – Sat: 8AM – 6PM<br>Sunday: Closed</p></div>
+  </div>
+  <form class="form-grid" onsubmit="event.preventDefault();alert('Thanks! We will get back to you shortly.');this.reset();">
+    <input required placeholder="Full Name">
+    <input required type="email" placeholder="Email Address">
+    <input placeholder="Phone Number">
+    <textarea required placeholder="Tell us about your electrical needs..."></textarea>
+    <button class="btn btn-fill" type="submit">Send Message</button>
+  </form>
+</div></div></section>`;}
+
+const routes={
+  '':homeView,'/':homeView,'/about':aboutView,'/services':servicesView,
+  '/gallery':galleryView,'/testimonials':testimonialsView,'/faqs':faqsView,'/contact':contactView
+};
+function render(){
+  const hash=location.hash.replace('#','')||'/';
+  const app=document.getElementById('app');
+  let html;
+  if(hash.startsWith('/service/')) html=serviceDetailView(hash.split('/service/')[1]);
+  else html=(routes[hash]||homeView)();
+  app.innerHTML=html;
+  document.querySelectorAll('nav a').forEach(a=>{
+    const target=a.getAttribute('href').replace('#','');
+    a.classList.toggle('active',(target===hash)||(target==='/'&&hash===''));
+  });
+  document.getElementById('mainnav').classList.remove('open');
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',render);
+window.addEventListener('DOMContentLoaded',()=>{
+  render();
+  setTimeout(()=>{
+    document.getElementById('intro').classList.add('hide');
+    document.body.classList.remove('locked');
+  },2600);
+});
+</script>
+</body>
+</html>
